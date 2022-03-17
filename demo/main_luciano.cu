@@ -8,9 +8,11 @@
 #include <limits>
 #include <random>
 
+#include "cuNSearchDeviceData.h"
+
 using namespace cuNSearch;
 
-using Real3 = std::array<Real, 3>;
+using Real3 = std::array< Real, 3 >;
 std::vector<Real3> positions;
 
 inline Real3 operator-(const Real3 & left, const Real3 & right)
@@ -69,6 +71,14 @@ void testCuNSearch()
 			}
 		}
 	}
+	
+	PointSet ps(positions.front().data(), positions.size(), true);
+	cuNSearchDeviceData data_d;
+	
+	
+	
+	////////////////// ORIGINAL
+		
 	std::random_shuffle(positions.begin(), positions.end());
 	printf("Number of particles: %d \n", static_cast<int>(positions.size()));
 
